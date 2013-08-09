@@ -1,6 +1,6 @@
 {
     "name": "lopo/phpsass-compass",
-    "description": "PHPSass-Compass is a Compass extension port for PHPSass.",
+    "description": "PHPSass-Compass is a limited support of Compass framework for PHPSass.",
     "license": "BSD-2-Clause",
     "support": {
         "issues": "https://github.com/Lopo/PHPSass-Compass/issues",
@@ -17,8 +17,7 @@
         }
     ],
 	"require": {
-		"php": ">=5.3.0",
-		"lopo/phpsass": "201308090935"
+		"lopo/phpsass": ">=201308090935"
 	},
     "autoload": {
 		"psr-0": {
