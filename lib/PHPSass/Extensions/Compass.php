@@ -553,7 +553,7 @@ implements ExtensionInterface
 	 */
 	public static function compassCos($number)
 	{
-		return new Number(sin($number));
+		return new Number(cos($number));
 	}
 
 	/**
@@ -562,7 +562,7 @@ implements ExtensionInterface
 	 */
 	public static function compassTan($number)
 	{
-		return new Number(sin($number));
+		return new Number(tan($number));
 	}
 
 # not sure what should happen with these
