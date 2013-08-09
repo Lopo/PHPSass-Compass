@@ -1,0 +1,6 @@
+@import "compass/compass";
+
+
+body {
+  @include border-radius();
+}
