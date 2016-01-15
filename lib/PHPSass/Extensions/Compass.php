@@ -3,7 +3,7 @@ namespace PHPSass\Extensions;
 
 use PHPSass\Script\Literals\Boolean,
 	PHPSass\Script\Literals\Number,
-	PHPSass\Script\Literals\String,
+	PHPSass\Script\Literals\SassString,
 	PHPSass\Script\Literals\Colour,
 	PHPSass\Script\Functions;
 
@@ -219,7 +219,7 @@ implements ExtensionInterface
 	/**
 	 * @param string $file
 	 * @param string $mime
-	 * @return String
+	 * @return SassString
 	 */
 	public static function compassInlineImage($file, $mime=NULL)
 	{
@@ -229,15 +229,15 @@ implements ExtensionInterface
 			$data=base64_encode(file_get_contents($path));
 			# todo - do not return encoded if file size > 32kb
 
-			return new String("url('data:$mime;base64,$data')");
+			return new SassString("url('data:$mime;base64,$data')");
 			}
 
-		return new String('');
+		return new SassString('');
 	}
 
 	/**
 	 * @param string $file
-	 * @return String
+	 * @return SassString
 	 */
 	public static function compassInlineFontFiles($file)
 	{
@@ -266,7 +266,7 @@ implements ExtensionInterface
 			$files[]="url('data:$mime;base64,$data') format('$format')";
 			}
 
-		return new String(implode(', ', $files));
+		return new SassString(implode(', ', $files));
 	}
 
 	/**
@@ -290,7 +290,7 @@ implements ExtensionInterface
 	}
 
 	/**
-	 * @return String
+	 * @return SassString
 	 */
 	public static function compassCompact()
 	{
@@ -312,7 +312,7 @@ implements ExtensionInterface
 			$list[]=$string;
 			}
 
-		return new String(implode($sep, $list));
+		return new SassString(implode($sep, $list));
 	}
 
 	/**
@@ -342,7 +342,7 @@ implements ExtensionInterface
 	}
 
 	/**
-	 * @return String
+	 * @return SassString
 	 */
 	public static function compassCompassList()
 	{
@@ -352,18 +352,18 @@ implements ExtensionInterface
 			$list=array_merge($list, self::compassList($arg));
 			}
 
-		return new String(implode(', ', $list));
+		return new SassString(implode(', ', $list));
 	}
 
 	/**
-	 * @return String
+	 * @return SassString
 	 */
 	public static function compassCompassSpaceList()
 	{
 		$args=func_get_args();
 		$list=self::compassList($args, ',');
 
-		return new String(implode(' ', $list));
+		return new SassString(implode(' ', $list));
 	}
 
 	/**
@@ -452,7 +452,7 @@ implements ExtensionInterface
 	/**
 	 * http://compass-style.org/reference/compass/helpers/selectors/#nest
 	 *
-	 * @return String
+	 * @return SassString
 	 */
 	public static function compassNest()
 	{
@@ -470,13 +470,13 @@ implements ExtensionInterface
 			$output=array_slice($output, $size);
 			}
 
-		return new String(implode(', ', $output));
+		return new SassString(implode(', ', $output));
 	}
 
 	/**
 	 * @param string $initial
 	 * @param string $new
-	 * @return String
+	 * @return SassString
 	 */
 	public static function compassAppendSelector($initial, $new)
 	{
@@ -485,13 +485,13 @@ implements ExtensionInterface
 			$list[$k]=trim($selector).$new;
 			}
 
-		return new String(implode(', ', $list));
+		return new SassString(implode(', ', $list));
 	}
 
 	/**
 	 * @param mixed $from
 	 * @param mixed $to
-	 * @return String
+	 * @return SassString
 	 */
 	public static function compassHeaders($from=FALSE, $to=FALSE)
 	{
@@ -517,7 +517,7 @@ implements ExtensionInterface
 			$output[]='h'.$i;
 			}
 
-		return new String(implode(', ', $output));
+		return new SassString(implode(', ', $output));
 	}
 
 	public static function compassCommaList()
@@ -570,7 +570,7 @@ implements ExtensionInterface
 	/**
 	 * @param string $path
 	 * @param bool $only_path
-	 * @return String
+	 * @return SassString
 	 */
 	public static function compassStylesheetUrl($path, $only_path=FALSE)
 	{
@@ -580,7 +580,7 @@ implements ExtensionInterface
 	/**
 	 * @param string $path
 	 * @param bool $only_path
-	 * @return String
+	 * @return SassString
 	 */
 	public static function compassFontUrl($path, $only_path=FALSE)
 	{
@@ -590,7 +590,7 @@ implements ExtensionInterface
 	/**
 	 * @param string $path
 	 * @param bool $only_path
-	 * @return String
+	 * @return SassString
 	 */
 	public static function compassImageUrl($path, $only_path=FALSE)
 	{
@@ -601,7 +601,7 @@ implements ExtensionInterface
 	 * @param string $path
 	 * @param bool $only_path
 	 * @param bool $web_path
-	 * @return String
+	 * @return SassString
 	 * @throws Exception
 	 */
 	public static function compassUrl($path, $only_path=FALSE, $web_path=TRUE)
@@ -618,10 +618,10 @@ implements ExtensionInterface
 			}
 
 		if ($only_path) {
-			return new String($path);
+			return new SassString($path);
 			}
 
-		return new String("url('$path')");
+		return new SassString("url('$path')");
 	}
 
 	/**

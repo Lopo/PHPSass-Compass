@@ -10,14 +10,10 @@
         {
             "name": "Pavol Hluchý (Lopo)",
             "homepage": "https://github.com/Lopo"
-        },
-        {
-            "name": "Richard Lyon",
-            "homepage": "https://github.com/richthegeek"
         }
     ],
 	"require": {
-		"lopo/phpsass": ">=201308090935"
+		"lopo/phpsass": ">=201601141738"
 	},
     "autoload": {
 		"psr-0": {
